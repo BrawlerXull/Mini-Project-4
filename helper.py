@@ -1,6 +1,7 @@
 import os
 import shutil
 from watchgod import watch
+from datetime import datetime , timedelta
 
 def process_files(testing_path):
     split_files_dict = {}  
@@ -38,3 +39,12 @@ def move_files_on_change(testing_path):
     print(f"Split files result: {split_files_result}")
 
 
+def delete_files_older_than(testing_path, days):
+    current_time = datetime.now()
+    for file in os.listdir(testing_path):
+        file_path = os.path.join(testing_path, file)
+        if os.path.isfile(file_path):
+            file_time = datetime.fromtimestamp(os.path.getctime(file_path))
+            if current_time - file_time > timedelta(days=days):
+                os.remove(file_path)
+                print(f"Deleted {file} (older than {days} days)")
