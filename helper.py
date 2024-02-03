@@ -39,12 +39,29 @@ def move_files_on_change(testing_path):
     print(f"Split files result: {split_files_result}")
 
 
-def delete_files_older_than(testing_path, days):
-    current_time = datetime.now()
-    for file in os.listdir(testing_path):
-        file_path = os.path.join(testing_path, file)
-        if os.path.isfile(file_path):
-            file_time = datetime.fromtimestamp(os.path.getctime(file_path))
-            if current_time - file_time > timedelta(days=days):
-                os.remove(file_path)
-                print(f"Deleted {file} (older than {days} days)")
+def get_all_files_access_time_sorted(testing_path):
+    all_files_access_time = []
+
+    for folder in os.listdir(testing_path):
+        folder_path = os.path.join(testing_path, folder)
+
+        if os.path.isdir(folder_path):
+            for file in os.listdir(folder_path):
+                file_path = os.path.join(folder_path, file)
+
+                if os.path.isfile(file_path):
+                    access_time = datetime.fromtimestamp(os.path.getatime(file_path))
+                    all_files_access_time.append((file, access_time))
+
+    all_files_access_time_sorted = sorted(all_files_access_time, key=lambda x: x[1])
+
+    return all_files_access_time_sorted
+
+def get_all_files_access_time_sorted_processed(testing_path):
+    file_names = []
+    access_time = []
+    files = get_all_files_access_time_sorted(testing_path)
+    for file in files :
+        file_names.append(file[0])
+        access_time.append(file[1])
+    return file_names , access_time
