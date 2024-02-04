@@ -1,3 +1,4 @@
+import subprocess
 import tkinter as tk
 from tkinter import messagebox
 import mysql.connector
@@ -26,6 +27,7 @@ def signup():
     db_connection.commit()
 
     messagebox.showinfo("Signup Successful", "User successfully signed up!")
+    subprocess.run(["python", "C:\\Users\\adity\\PycharmProjects\\tut1\\login_page.py"])
 
 root = tk.Tk()
 root.title("Signup Page")
