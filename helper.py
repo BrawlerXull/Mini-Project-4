@@ -75,3 +75,8 @@ def get_all_files_access_time_sorted_processed(testing_path):
         file_names.append(file[0])
         access_time.append(file[1])
     return file_names , access_time
+
+def applyWatcher(testing_path):
+    for changes in watch(testing_path):
+        
+        move_files_on_change(testing_path)

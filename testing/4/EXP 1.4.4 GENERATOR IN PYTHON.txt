@@ -1,0 +1,23 @@
+def fib(size):
+    a,b=0,1
+    while True:
+        c=a+b
+        if c < size:
+            yield c
+            a=b
+            b=c
+        else:
+            break
+
+x=int(input("enter size"))
+gen=fib(x)
+
+print(next(gen))
+print(next(gen))
+print(next(gen))
+print(next(gen))
+print(next(gen))
+print(next(gen))
+
+print(next(gen))
+
