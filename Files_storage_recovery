@@ -1,0 +1,116 @@
+import tkinter as tk
+from tkinter import filedialog
+import os
+import mysql.connector
+from datetime import datetime
+
+# Function to insert directory information into the 'files_record' table
+def insert_directory(filepath):
+    current_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+
+    # Insert directory information into the 'files_record' table
+    cursor.execute("INSERT INTO files_record (filepath, date, time) VALUES (%s, %s, %s)",
+                   (filepath, current_time.split()[0], current_time.split()[1]))
+    db_connection.commit()
+
+# Function to list files and their information in the selected directory
+def list_files(directory):
+    # Specify sub-folder names to include
+    subfolder_names = ['docs', 'xlxs', 'ppt', 'txt', 'jpeg', 'jpg', 'mp3', 'mp4']
+
+    for root, dirs, files in os.walk(directory):
+        for file in files:
+            file_path = os.path.join(root, file)
+            file_name, file_extension = os.path.splitext(file)
+            file_date_time = datetime.fromtimestamp(os.path.getmtime(file_path)).strftime('%Y-%m-%d %H:%M:%S')
+
+            # Read file content as bytes (blob)
+            with open(file_path, 'rb') as file:
+                file_content = file.read()
+
+            # Insert file information into the 'files' table
+            cursor.execute("INSERT INTO files (filepath, filename, date, time, Files) VALUES (%s, %s, %s, %s, %s)",
+                           (file_path, file_name, file_date_time.split()[0], file_date_time.split()[1], file_content))
+            db_connection.commit()
+
+        for subdir in dirs:
+            if subdir.lower() in subfolder_names:
+                subfolder_path = os.path.join(root, subdir)
+                list_files(subfolder_path)
+
+# Function to handle the "Choose File" button click event
+def choose_file():
+    file_path = filedialog.askdirectory()
+    if file_path:
+        insert_directory(file_path)
+        list_files(file_path)
+
+# Function to retrieve files from the 'files' table and save them to the specified location with their original extensions
+def recover_files(destination_folder):
+    # Retrieve file information from the 'files' table
+    cursor.execute("SELECT * FROM files")
+    data = cursor.fetchall()
+
+    for row in data:
+        filepath = row[1]
+        filename = row[2]
+        file_extension = os.path.splitext(filename)[1]  # Extract file extension from the filename
+        file_content = row[5]
+
+        # Create the destination folder if it doesn't exist
+        if not os.path.exists(destination_folder):
+            os.makedirs(destination_folder)
+
+        # Construct the full path for saving the file with its original extension
+        full_path = os.path.join(destination_folder, f"{filename}{file_extension}")
+
+        # Save the file content to the specified location
+        with open(full_path, 'wb') as file:
+            file.write(file_content)
+
+# Create main window
+root = tk.Tk()
+root.title("File Explorer")
+
+# Create Choose File button
+choose_file_button = tk.Button(root, text="Choose File", command=choose_file)
+choose_file_button.pack(pady=10)
+
+# Database connection
+db_connection = mysql.connector.connect(
+    host="localhost",
+    user="root",
+    password="admin",
+    database="aditya"
+)
+cursor = db_connection.cursor()
+
+# Create 'files_record' table if not exists
+cursor.execute('''CREATE TABLE IF NOT EXISTS files_record (
+                    id INT AUTO_INCREMENT PRIMARY KEY,
+                    filepath VARCHAR(255),
+                    date DATE,
+                    time TIME
+                )''')
+db_connection.commit()
+
+# Create 'files' table if not exists
+cursor.execute('''CREATE TABLE IF NOT EXISTS files (
+                    id INT AUTO_INCREMENT PRIMARY KEY,
+                    filepath VARCHAR(255),
+                    filename VARCHAR(255),
+                    date DATE,
+                    time TIME,
+                    Files LONGBLOB
+                )''')
+db_connection.commit()
+
+# Start the Tkinter event loop
+root.mainloop()
+
+# Call the function to recover files after the Tkinter window is closed
+destination_folder = 'C:\\Users\\adity\\Desktop\\Recovery'
+recover_files(destination_folder)
+
+# Close database connection
+db_connection.close()
