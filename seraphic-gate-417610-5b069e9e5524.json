@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "seraphic-gate-417610",
+  "private_key_id": "5b069e9e5524aa0c2dedd6d66f21436ed017f37e",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCopyxG/CmAV5LK\nQDj7uWs5PZQZGGh6M/LPxHwMB1XemSlSnaxDYhHOp/fiRMr86y3bLWSZSdpeEovt\nKg+fN2lWL6s03JQWCCDiheCfGyjetebN0UOlYWAj4MqPWQOA76t7V1n7emHCHae4\nSINEUg+0XDVr9uSPs3J3PvAPuLyfBfp83CERpw9uZ0wo7VJ2vHcWhpzmX07m7Rvh\nQq1f9NKDvJB9hUEBgDJr0jGwdD/VlnP6Ji0c+HIR3NudoBzvS+hU4oe/Hj2qwedy\nWoqqc07Gt3JiugPEw/XNyZiO2KXJKXXqW0XuCXDg3xX2Dtq+Fmk0rVPWITxyu4iC\n5xfVnH2bAgMBAAECggEAQuTwBIXfRjc2E3+uunWcqHsaw2txgUsam7tRAopkTmMM\nx2af3ahH7OKlyTtFElWL/jv+g2iOMzMDCkJdKOdXIibNLy3wlN6LgJ3ebu1cZB3d\nWrSOssmxUvnGDl6dq6Ykq8sFd2Be5xpRHKCyZEZyUTUjwVuP48mm9NJjcLDzK9WT\nm4EIB8PfDdmagrZu9cTTGDb56OAtA2tkQ3JG9NGr8hSJMZMwFg8iz/3wKPCS8w4j\nWY3czWHaQVfkjytfYibX8xa4PqeKPye6Ct/SP445av3zi/0H8ESwGFfTe4Ad2R3y\nhf+gtFoZ8gR/X/pmSJSLTZ/9MpJoATBKrfSlJZz1WQKBgQDcVK1ZhwSz/U2ZaCrI\ndnECRGQmBKgkLTkpCEpYV1kxwBAmSGQGwp3FVrccZmzZJXcjh8i1bjUgfPTttrcv\nEATnb7DLblXyPmivLY4swScojKwNJqvXSjbnm5YSdR8XmTYW5hwWp+5MUsQus2fB\nElRPfYR+JBjXmBK+9SM6Jv+F8wKBgQDD9MdLOW02hMGDenLwYaWN5OFK3dCTkZyX\ne2vWkkt8P+EwWly6nrIfK/nRuf8C8tzrGf/s6eZtIVNa1nB61GrdZyUgZ4iw1WKZ\nKiAt1p7cKTNM1Mz+cK/OaedW7x7RBSMxXFZ6iglBZj/1WnpT3omT4FJ/3M69200s\n5n1WN4/LuQKBgC3CXFpKo1xqUDJ7It+NUb0hzRbkQrN4vPVbpm0gfwLJG9GHmVaa\nFsBEWTVJxHN4x3yWl8WuhNQhf5DbMMJSdmJGnRYy7SCpe35eXLfIycQvKxB0Jp5I\n6IxDkPB2aKWzCTvKQK0n5WLukZYNZo//qYj0zY6RGqO0DrigGtfZ/5mnAoGADPVt\nEI51qHtTCMzaOQdcGWwfcgIFPx0MDAB/eysljsvyqm3vX/AKu4D+/l2cfadt8KZB\nhHtbX7AqgQFZYuYVQxsFG4V9RqR15scgZaehzdFzsQsJm3H8Tlw2jks18IC0eRkw\nJt5mCksmw6T+HfnDg2H8UrRZf7i2+9cqRr9Z5RECgYB08Hx5lU236u4xQYULXp12\n+MxCer3ilV8YDlEi9uwj9htuuRJFW4CgxIKJ8etffn6kAvy5eAdFFTKV1LW0ICfE\nG2kLOd3RrpJpEpn8d8mejaIYFVsd7FNJJ92TxvGL/BLtIuzhlegKizF4pLN07zJg\nzQq1bvtN63rZhTV6Xn7BdA==\n-----END PRIVATE KEY-----\n",
+  "client_email": "sairam@seraphic-gate-417610.iam.gserviceaccount.com",
+  "client_id": "107724990205889779638",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/sairam%40seraphic-gate-417610.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
